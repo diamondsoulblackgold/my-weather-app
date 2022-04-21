@@ -48,9 +48,8 @@ function displayWeather(response) {
     response.data.wind.speed
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#datetime").innerHTML = formatDate(
-    response.data.dt * 1000
-  );
+  
+  
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
