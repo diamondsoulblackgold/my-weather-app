@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div id="gradient">
+    <div >
 
 
         <h1 class="weather-app">
@@ -28,7 +28,7 @@
                 </li>
 
                 <span id="temperature"> 12
-                </span>°C
+                </span> <span id = "units"><a href= # id = "celsius-temp" class= "active">℃</a>|<a href= # id = "fahrenheit-temp" class = "active">℉</a></span>
 
 
 
@@ -46,8 +46,8 @@
 
                 </span>
                 <li>
-                    <span id="icon">
-                        <img src="images/rainyday.png" alt="clear" width="30" class="float-center" />
+                    <span>
+                        <img src="images/rainyday.png" alt="clear" width="30" class="float-center" id= "icon" />
                     </span>
                 </li>
             </ul>
@@ -63,26 +63,28 @@
 
         <p>
         <ul>
-            <li>
+            <li class= "wind">
                 Wind:<span id="wind">
                 </span>Km/H
             </li>
-            <li>
+            <li class = "wind">
                 Humidity:<span id="humidity"></span>%
             </li>
 
         </ul>
-        <form id="display-search">
+        <form id="display-search" >
+           
             <label for="date" class="search-tag">
                 Enter City
             </label>
 
 
 
-            <input id="city-search" type="search" autofocus="on" class="search-bar" />
-
+            <input id="city-search" type="search" autofocus="on" class="search-bar" placeholder="Enter a city name"/>
+     
             <input type="submit" class="search-button" id="search-button1" />
-
+            </div>
+     
         </form>
         <span id="current-display">
             <button id="current-location-button">

@@ -39,7 +39,7 @@ li {
   font-weight: bolder;
   color: black;
 }
-body {
+div {
   background-image: url("images/weatherimage.jpg");
 }
 
@@ -84,4 +84,18 @@ body {
   background-color: ghostwhite;
   border-radius: 30px;
   box-shadow: 10px 5px 5px;
+}
+.float-center {
+  max-width: 100%;
+  height: auto;
+}
+.active {
+  color: black;
+  text-decoration: none;
+}
+.active:hover {
+  cursor: default;
+}
+.wind {
+  text-align: center;
 }
