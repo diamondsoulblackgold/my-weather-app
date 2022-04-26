@@ -8,8 +8,7 @@ time of the selected city*/
 // added wind and humidity
 //fixed description weather[0].description
 function formatDate(timestamp){
-  let timestamp = response.data.dt;
-let date = new Date(timestamp * 1000);
+return new Date(timestamp * 1000);
 }
   function displayWeather(response) {
     document.querySelector("#display-weather").innerHTML = response.data.name;
@@ -24,7 +23,7 @@ let date = new Date(timestamp * 1000);
     );
     document.querySelector("#humidity").innerHTML = response.data.main.humidity;
 
- document.querySelector("#datetime").innerHTML = formatDate();
+ document.querySelector("#datetime").innerHTML = formatDate(response.data.dt);
     let iconElement = document.querySelector("#icon");
     iconElement.setAttribute(
       "src",
@@ -81,4 +80,4 @@ let date = new Date(timestamp * 1000);
   fahrenheitLink.addEventListener("click", displayFarhenhietTemperature);
   let ctemp = document.querySelector("#celsius-temp");
   ctemp.addEventListener("click", displayCelsiusTemperature);
-}
+
