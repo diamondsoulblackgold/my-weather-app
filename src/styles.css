@@ -73,7 +73,7 @@ div {
 }
 .temp {
   font-size: 40px;
-  text-transform: capitalize;
+  text-transform: uppercase;
   color: rgb(218, 153, 239);
 }
 .weather-app {
