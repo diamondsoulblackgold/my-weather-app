@@ -7,7 +7,8 @@ time of the selected city*/
 //connect element "button" to function
 // added wind and humidity
 //fixed description weather[0].description
-function formatDate(timestamp){
+function formatDate(timestamp)
+{
 return new Date(timestamp * 1000);
 }
   function displayWeather(response) {
@@ -33,7 +34,8 @@ return new Date(timestamp * 1000);
 
   }
 
-  function getPosition(event) {
+  function getPosition(event) 
+  {
     event.preventDefault();
     navigator.geolocation.getCurrentPosition(searchLocation);
   }
@@ -54,7 +56,7 @@ return new Date(timestamp * 1000);
     let cityElement = document.querySelector("#display-weather");
     cityElement.innerHTML = cityInput.value;
     let apiKey = "308d6474e5d7b4afbc574ee18365c824";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayWeather);
   }
   let form = document.querySelector("#display-search");
