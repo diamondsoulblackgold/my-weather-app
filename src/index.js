@@ -13,10 +13,10 @@ return new Date(timestamp * 1000);
 }
 function displayWeatherForecast(){
   let forecastElement =document.querySelector("#forecast");
-  let forecastHTML = `<div class = "row">`;
+  let forecastHTML = `<div class = "column">`;
   let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
   days.forEach(function(day){
-  forecastHTML = forecastHTML+`<div class="col-3">
+  forecastHTML = forecastHTML+`<div class="col-2">
                     <div class="weather-forecast-date">
                         ${day}
                     </div>
@@ -26,12 +26,11 @@ function displayWeatherForecast(){
                     <div class="weather-forecast-temperature">
                         <span class = "weather-forecast-temp-max">18°</span>
                         <span class= "weather-forecast-temp-min">12°</span>
-                    </div>
-                    </div>`;
-           
+                    </div>`                 
   });
    forecastHTML = forecastHTML + `</div>`;
             forecastElement.innerHTML = forecastHTML;
+
 }
   function displayWeather(response) 
   {
@@ -107,4 +106,4 @@ function displayWeatherForecast(){
   fahrenheitLink.addEventListener("click", displayFarhenhietTemperature);
   let ctemp = document.querySelector("#celsius-temp");
   ctemp.addEventListener("click", displayCelsiusTemperature);
-
+  displayWeatherForecast();
