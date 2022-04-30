@@ -17,21 +17,22 @@ forEach(); function called to select each string inside the array.
 forcastHTML (which is <div class = "row">) is added to the rest of the div class row.
 displays rainy day image in all seven days of the week with argument 'day'
 call the function displayWeatherForcast at the bottom of the js file*/
-function displayWeatherForecast(){
+function displayWeatherForecast(response){
+  let forecast = response.data.daily;
   let forecastElement =document.querySelector("#forecast");
   let forecastHTML = `<div class = "row">`;
   let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function(day){
-  forecastHTML = forecastHTML+`<div class="col-2">
+  days.forEach(function(forecastDay){
+  forecastHTML +=`<div class="col-2">
                     <div class="weather-forecast-date">
-                        ${day}
+                        ${forecastDay.dt}
                     </div>
                     <span class="images">
                         <img src="images/rainyday.png" alt="" width="30" />
                         </span>
                     <div class="weather-forecast-temperature">
-                        <span class = "weather-forecast-temp-max">18°</span>
-                        <span class= "weather-forecast-temp-min">12°</span>
+                        <span class = "weather-forecast-temp-max">${forecastDay.main.temp_max}</span>
+                        <span class= "weather-forecast-temp-min">${forecastDay.main.temp_min}</span>
                     </div>
                     </div>`                 
   });
