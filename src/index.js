@@ -15,7 +15,8 @@ return new Date(timestamp * 1000);
 added an array of days;
 forEach(); function called to select each string inside the array.
 forcastHTML (which is <div class = "row">) is added to the rest of the div class row.
-displays rainy day image in all seven days of the week with argument 'day'*/
+displays rainy day image in all seven days of the week with argument 'day'
+call the function displayWeatherForcast at the bottom of the js file*/
 function displayWeatherForecast(){
   let forecastElement =document.querySelector("#forecast");
   let forecastHTML = `<div class = "row">`;
@@ -31,6 +32,7 @@ function displayWeatherForecast(){
                     <div class="weather-forecast-temperature">
                         <span class = "weather-forecast-temp-max">18°</span>
                         <span class= "weather-forecast-temp-min">12°</span>
+                    </div>
                     </div>`                 
   });
    forecastHTML = forecastHTML + `</div>`;
