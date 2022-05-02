@@ -11,6 +11,7 @@ function formatDate(timestamp)
 {
 return new Date(timestamp * 1000);
 }
+
 /*selected div id="forrecast";
 added an array of days;
 forEach(); function called to select each string inside the array.
@@ -22,20 +23,21 @@ function displayWeatherForecast(response){
   let forecastElement =document.querySelector("#forecast");
   let forecastHTML = `<div class = "row">`;
   let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function(forecastDay){
+  days.forEach(function(forecastDay, index){
+if (index<6){
   forecastHTML +=`<div class="col-2">
                     <div class="weather-forecast-date">
-                        ${forecastDay.dt}
+                        ${formatDay(forecastDay.dt)}
                     </div>
                     <span class="images">
-                        <img src="images/rainyday.png" alt="" width="30" />
+                        <img src="http://openweather.org/img/wn/${forecastDay.data.weather[0].icon}@2x.png" alt="" width="30" />
                         </span>
                     <div class="weather-forecast-temperature">
-                        <span class = "weather-forecast-temp-max">${forecastDay.main.temp_max}</span>
-                        <span class= "weather-forecast-temp-min">${forecastDay.main.temp_min}</span>
+                        <span class = "weather-forecast-temp-max">${Math.round(forecastDay.main.temp_max)}</span>
+                        <span class= "weather-forecast-temp-min">${Math.round(forecastDay.main.temp_min)}</span>
                     </div>
                     </div>`                 
-  });
+  }});
    forecastHTML = forecastHTML + `</div>`;
             forecastElement.innerHTML = forecastHTML;
 
@@ -61,9 +63,8 @@ function displayWeatherForecast(response){
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
     celsiusTemperature = response.data.main.temp;
-
-   
-
+      getForecast(response.data.coord)
+       
   }
 
   function getPosition(event) 
@@ -73,8 +74,8 @@ function displayWeatherForecast(response){
   }
   //make an api call to open weather map api.
   function searchLocation(position) {
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
+    let lat = position.coord.latitude;
+    let lon = position.coord.longitude;
     let apiKey = "308d6474e5d7b4afbc574ee18365c824";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayWeather);
@@ -114,4 +115,4 @@ function displayWeatherForecast(response){
   fahrenheitLink.addEventListener("click", displayFarhenhietTemperature);
   let ctemp = document.querySelector("#celsius-temp");
   ctemp.addEventListener("click", displayCelsiusTemperature);
-  displayWeatherForecast();
+ displayWeatherForecast();
