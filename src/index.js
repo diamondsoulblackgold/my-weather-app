@@ -23,7 +23,7 @@ function displayWeatherForecast(response){
   let forecastElement =document.querySelector("#forecast");
   let forecastHTML = `<div class = "row">`;
   let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function(forecastDay, index){
+  forecast.forEach(function(forecastDay, index){
 if (index<6){
   forecastHTML +=`<div class="col-2">
                     <div class="weather-forecast-date">
@@ -40,7 +40,12 @@ if (index<6){
   }});
    forecastHTML = forecastHTML + `</div>`;
             forecastElement.innerHTML = forecastHTML;
-
+ getForecast(response.data.coord);
+}
+function getForecast(coordinates){
+let apiKey = "308d6474e5d7b4afbc574ee18365c824";
+let apiUrl= `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayWeatherForecast);
 }
   function displayWeather(response) 
   {
@@ -63,8 +68,8 @@ if (index<6){
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
     celsiusTemperature = response.data.main.temp;
-      getForecast(response.data.coord)
-       
+      
+      
   }
 
   function getPosition(event) 
@@ -102,17 +107,5 @@ if (index<6){
     temperatureElement.innerHTML = Math.round(celsiusTemperature);
   }
 
-  function displayFarhenhietTemperature(event) {
-    event.preventDefault();
-    let temperatureElement = document.querySelector("#temperature");
-    let fahrenhietTemp = (celsiusTemperature * 9) / 5 + 32;
-    temperatureElement.innerHTML = Math.round(fahrenhietTemp);
 
 
-  }
-  let celsiusTemperature = null;
-  let fahrenheitLink = document.querySelector("#fahrenheit-temp");
-  fahrenheitLink.addEventListener("click", displayFarhenhietTemperature);
-  let ctemp = document.querySelector("#celsius-temp");
-  ctemp.addEventListener("click", displayCelsiusTemperature);
- displayWeatherForecast();
